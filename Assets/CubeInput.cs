@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ public class CubeInput : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (transform.position.y < 0)
+        {
+            transform.position =new Vector3(0, 3, 0);
+        }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray,out var hitInfo,1000f))
         {
